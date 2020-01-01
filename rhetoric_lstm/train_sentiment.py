@@ -263,47 +263,13 @@ if __name__ == "__main__":
             epoch_per_eval = args.epocheval
             nb_early_stop = -1
 
-            if lis_parameter[0] == "bcnelmo":
-                rst_unit = 20
-                batchsize = 25  # args.batchsize
-                flo_learning_rate = 5e-05  # args.rst_lr
-                optimizer = optimizers.Adam(flo_learning_rate)  # AdaGrad
-                flo_l2 = 0.1  # args.rst_l2
-                flo_relation_learning_rate = 5e-04  # args.relation_lr 1e-04
-                flo_dropout = 0.65  # args.dropout 0.2
-                flo_input_dp = 0.3
-                # options: chainer.links.LayerNormalization or None
-                normalizer_teq = chainer.links.LayerNormalization
-                # options: chainer.links.BatchNormalization or None
-                x_normalizer_teq = chainer.links.BatchNormalization
-                # options: initializers.LeCunUniform or None
-                # When initializers.LeCunUniform is chosen, bias is not this,
-                # but uniform random between 1 and 2
-                param_initialization = initializers.LeCunUniform
-            elif lis_parameter[0] == "bcnglove":
-                rst_unit = 20
-                batchsize = 25  # args.batchsize
-                flo_learning_rate = 5e-05  # args.rst_lr
-                optimizer = optimizers.Adam(flo_learning_rate)  # AdaGrad
-                flo_l2 = 0.1  # args.rst_l2
-                flo_relation_learning_rate = 5e-04  # args.relation_lr 1e-04
-                flo_dropout = 0.65  # args.dropout 0.2
-                flo_input_dp = 0.3
-                # options: chainer.links.LayerNormalization or None
-                normalizer_teq = chainer.links.LayerNormalization
-                # options: chainer.links.BatchNormalization or None
-                x_normalizer_teq = chainer.links.BatchNormalization
-                # options: initializers.LeCunUniform or None
-                # When initializers.LeCunUniform is chosen, bias is not this,
-                # but uniform random between 1 and 2
-                param_initialization = initializers.LeCunUniform
-            elif lis_parameter[0] == "bert":
+            if n_label == 2:
                 rst_unit = 4
                 batchsize = 25  # args.batchsize
                 flo_learning_rate = 5e-05  # args.rst_lr
                 optimizer = optimizers.Adam(flo_learning_rate)  # AdaGrad
                 flo_l2 = 0.1  # args.rst_l2
-                flo_relation_learning_rate = 5e-04  # args.relation_lr 1e-04
+                flo_relation_learning_rate = 5e-04
                 flo_dropout = 0.5  # args.dropout 0.2
                 flo_input_dp = 0.4
                 normalizer_teq = chainer.links.LayerNormalization
@@ -312,38 +278,23 @@ if __name__ == "__main__":
                 # options: initializers.LeCunUniform or None
                 param_initialization = None
             else:
-                if n_label == 2:
-                    rst_unit = 4
-                    batchsize = 25  # args.batchsize
-                    flo_learning_rate = 5e-05  # args.rst_lr
-                    optimizer = optimizers.Adam(flo_learning_rate)  # AdaGrad
-                    flo_l2 = 0.1  # args.rst_l2
-                    flo_relation_learning_rate = 5e-04
-                    flo_dropout = 0.5  # args.dropout 0.2
-                    flo_input_dp = 0.4
-                    normalizer_teq = chainer.links.LayerNormalization
-                    # options: chainer.links.BatchNormalization or None
-                    x_normalizer_teq = None
-                    # options: initializers.LeCunUniform or None
-                    param_initialization = None
-                else:
-                    rst_unit = 20
-                    batchsize = 25  # args.batchsize
-                    flo_learning_rate = 5e-05  # args.rst_lr
-                    optimizer = optimizers.Adam(flo_learning_rate)  # AdaGrad
-                    flo_l2 = 0.1  # args.rst_l2
-                    flo_relation_learning_rate = 5e-04
-                    flo_dropout = 0.65  # args.dropout 0.2
-                    flo_input_dp = 0.3
-                    # options: chainer.links.LayerNormalization or None
-                    normalizer_teq = chainer.links.LayerNormalization
-                    # options: chainer.links.BatchNormalization or None
-                    x_normalizer_teq = chainer.links.BatchNormalization
-                    # options: initializers.LeCunUniform or None
-                    # When initializers.LeCunUniform is chosen, bias is not
-                    # this,
-                    # but uniform random between 1 and 2
-                    param_initialization = initializers.LeCunUniform
+                rst_unit = 20
+                batchsize = 25  # args.batchsize
+                flo_learning_rate = 5e-05  # args.rst_lr
+                optimizer = optimizers.Adam(flo_learning_rate)  # AdaGrad
+                flo_l2 = 0.1  # args.rst_l2
+                flo_relation_learning_rate = 5e-04
+                flo_dropout = 0.65  # args.dropout 0.2
+                flo_input_dp = 0.3
+                # options: chainer.links.LayerNormalization or None
+                normalizer_teq = chainer.links.LayerNormalization
+                # options: chainer.links.BatchNormalization or None
+                x_normalizer_teq = chainer.links.BatchNormalization
+                # options: initializers.LeCunUniform or None
+                # When initializers.LeCunUniform is chosen, bias is not
+                # this,
+                # but uniform random between 1 and 2
+                param_initialization = initializers.LeCunUniform
 
             station_id = 1
 
